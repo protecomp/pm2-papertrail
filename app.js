@@ -53,10 +53,10 @@ pmx.initModule({
                 //log('info', 'PM2', packet.data, packet);
             });
             bus.on('log:out', function(packet) {
-                log('info', packet.process.name, packet.data, packet);
+                log('info', packet.process.name, packet.data.replace(/\r?\n|\r/g, ''), packet);
             });
             bus.on('log:err', function(packet) {
-                log('error', packet.process.name, packet.data, packet);
+                log('error', packet.process.name, packet.data.replace(/\r?\n|\r/g, ''), packet);
             });
         });
     });
